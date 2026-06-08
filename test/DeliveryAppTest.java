@@ -30,17 +30,23 @@ class DeliveryAppTest {
 
     @Test
     void testIsExpired_NotExpired() {
-        assertFalse(PerishableParcel.isExpired(10, 5, 14));
+        PerishableParcel parcel = new PerishableParcel("Бананы", 10, "Москва",
+                10, 5);
+        assertFalse(parcel.isExpired( 14));
     }
 
     @Test
     void testIsExpired_Expired() {
-        assertTrue(PerishableParcel.isExpired(10, 5, 16));
+        PerishableParcel parcel = new PerishableParcel("Бананы", 10, "Москва",
+                10, 5);
+        assertTrue(parcel.isExpired( 16));
     }
 
     @Test
     void testIsExpired_LastDay() {
-        assertFalse(PerishableParcel.isExpired(10, 5, 15));
+        PerishableParcel parcel = new PerishableParcel("Бананы", 10, "Москва",
+                10, 5);
+        assertFalse(parcel.isExpired(15));
     }
 
     @Test

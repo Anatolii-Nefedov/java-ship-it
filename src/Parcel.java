@@ -1,14 +1,10 @@
-import org.w3c.dom.ls.LSOutput;
-import java.util.Scanner;
-
 public  abstract class Parcel {
-    Scanner scanner = new Scanner(System.in);
-    private String description;
-    private Integer weight;
+    protected String description;
+    private int weight;
     private String deliveryAddress;
-    private int sendDay;
+    protected int sendDay;
 
-    public Parcel(String description, Integer weight, String deliveryAddress, Integer sendDay) {
+    public Parcel(String description, int weight, String deliveryAddress, int sendDay) {
         this.description = description;
         this.weight = weight;
         this.deliveryAddress = deliveryAddress;
@@ -19,7 +15,7 @@ public  abstract class Parcel {
         return description;
     }
 
-    public Integer getWeight() {
+    public int getWeight() {
         return weight;
     }
 
@@ -31,7 +27,7 @@ public  abstract class Parcel {
         this.description = description;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 
@@ -57,10 +53,7 @@ public  abstract class Parcel {
 
     protected abstract int getBaseCost();
 
-    public Integer calculateDeliveryCost() {
-        if (weight == null || weight <= 0) {
-            return 0; // или выбросить исключение
-        }
+    public int calculateDeliveryCost() {
         return weight * getBaseCost();
     }
 }

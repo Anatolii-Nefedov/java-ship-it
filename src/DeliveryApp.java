@@ -90,7 +90,7 @@ public class DeliveryApp {
 
             PerishableParcel parcel = new PerishableParcel(description, weight, deliveryAddress, sendDay, timeToLive);
 
-            if (PerishableParcel.isExpired(sendDay, timeToLive, currentDay)) {
+            if (parcel.isExpired(currentDay)) {
                 System.out.println("Извините, не успеем доставить, товар испортится.");
                 return;
             }
@@ -99,16 +99,16 @@ public class DeliveryApp {
         }
     }
 
-    private static <T extends Parcel> void sendParcels(List<T> allParcels) {
-        for (T parcel : allParcels) {
+    private static  void sendParcels(List<Parcel> allParcels) {
+        for (Parcel parcel : allParcels) {
             parcel.packageItem();
             parcel.deliver();
         }
     }
 
-    private static <T extends Parcel> Integer calculateCosts(List<T> allParcels) {
+    private static  Integer calculateCosts(List<Parcel> allParcels) {
         int totalSum = 0;
-        for (T parcel : allParcels) {
+        for (Parcel parcel : allParcels) {
             totalSum += parcel.calculateDeliveryCost();
         }
         System.out.println("Всего посылок на сумму: " + totalSum + " USD");
